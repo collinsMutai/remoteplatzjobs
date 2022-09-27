@@ -7,17 +7,23 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './Shared/shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
+import { BtnstyleDirective } from './Directives/btnstyle.directive';
+import { FilterPipe } from '../app/Pipes/filter.pipe';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    BtnstyleDirective,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
     NgbModule,
     SharedModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
