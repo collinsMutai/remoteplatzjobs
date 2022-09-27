@@ -1,0 +1,38 @@
+
+
+
+.container{
+    padding-top: 7rem;
+}
+
+.btn{
+    background-color: #D1DFF2;
+    color: #1966D2;
+}
+.btn:hover{
+    background-color: #90b6eb;
+    color: #1966D2;
+}
+h1{
+    font-family: 'Poppins', sans-serif;
+    font-size: 3rem;
+    line-height: 3.125rem;
+    letter-spacing: normal;
+}
+h3{
+    font-size: 1.2rem;
+}
+.days{
+    padding-left: 15px;
+}
+.flag{
+    margin-right: 5px;
+}
+.view{
+    background-color: #D1CAE4;
+    color: #754AFD;
+}
+.view:hover{
+    background-color: #c7baeb;
+    color: #754AFD;
+}

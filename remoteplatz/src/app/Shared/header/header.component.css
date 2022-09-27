@@ -1,0 +1,11 @@
+
+
+.navbar-brand {
+    color: #754AFD;
+}
+button {
+    border: 1px solid #754AFD;
+    color: #754AFD;
+    padding: 5px;
+    width: 80px;
+}
