@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IJobs } from '../Interface/Ijobs';
+import { JobsService } from '../Service/jobs.service';
 
 @Component({
   selector: 'app-home',
@@ -10,56 +12,43 @@ export class HomeComponent implements OnInit {
   status: boolean = false;
   list: any
   selected: any
-  filterText:string= ''
-  jobs: IJobs[] = [
-    {
-      "title": "Full Stack JavaScript Developer",
-      "location": "Amsterdam, Netherlands",
-      "date": "6 days ago",
-      "time": "ASAP . GMT +02:00",
-      "flag":"fi fi-nl flag"
-    },
-    {
-      "title": "Frontend ReactJs Developer",
-      "location": "Riyadh, Saudi Arabia",
-      "date": "13 days ago",
-      "time": "ASAP . GMT +03:00",
-      "flag":"fi fi-sa flag"
-    },
-    {
-      "title": "Java Developer",
-      "location": "Riyadh, Saudi Arabia",
-      "date": "6 days ago",
-      "time": "ASAP . GMT +02:00",
-      "flag":"fi fi-sa flag"
-    },
-    {
-      "title": "Senior React Developer",
-      "location": "Berlin, Germany",
-      "date": "a month ago",
-      "time": "Within A Month . GMT +02:00",
-      "flag":"fi fi-de flag"
-    }
-  ]
-  constructor() { 
+  filterText: string = ''
+  filterTitle:string = ''
+  jobs: IJobs[] = []
+  constructor(private router: Router, private route:ActivatedRoute, private jobsService:JobsService) { 
     this.list = [
-      'Date posted',
-      'Number of Applicants',
-      'Location',
-      'Urgency'
+      'Full Stack',
+      'Frontend',
+      'React',
+      'Java'
     ]
   }
 
   ngOnInit(): void {
+    this.jobs = this.jobsService.jobs
   }
   select(item:any) {
     this.selected = item
-   
+    console.log(this.selected);
+    this.filterTitle = item
+    const inputId = document.getElementById('inputId') as HTMLInputElement
+    console.log(inputId.value);
+    inputId.value = ''
+    this.filterText = ''
     
   }
   isActive(item: any) {
     
     return this.selected === item
+  }
+  clearFilter() {
+    this.filterTitle = ''
+  }
+  getId(id: number) {
+    this.router.navigate([`/jobs/${id}`], {
+      relativeTo: this.route
+    })
+    
   }
 
 }

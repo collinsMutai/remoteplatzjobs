@@ -10,13 +10,18 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { BtnstyleDirective } from './Directives/btnstyle.directive';
 import { FilterPipe } from '../app/Pipes/filter.pipe';
 import { FormsModule } from '@angular/forms';
+import { FiltertitlePipe } from './Pipes/filtertitle.pipe';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     BtnstyleDirective,
-    FilterPipe
+    FilterPipe,
+    FiltertitlePipe,
+    AboutComponent,
+   
   ],
   imports: [
     BrowserModule,

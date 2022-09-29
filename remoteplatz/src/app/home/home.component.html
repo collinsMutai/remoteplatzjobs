@@ -3,12 +3,14 @@
   <div class="search d-flex mt-3">
     <button type="button" class="btn">Active</button>
     <input
+      id="inputId"
       class="form-control ms-auto"
       type="search"
       placeholder="Search"
       aria-label="Search"
       type="text"
       [(ngModel)]="filterText"
+      (ngModelChange)="clearFilter()"
     />
   </div>
   <div class="mt-5">
@@ -28,7 +30,10 @@
     </div>
   </div>
   <div class="card mt-5">
-    <div class="card-body" *ngFor="let job of jobs | filter: filterText">
+    <div
+      class="card-body"
+      *ngFor="let job of jobs | filter: filterText | filtertitle: filterTitle"
+    >
       <h3>
         {{ job.title }}
       </h3>
@@ -38,7 +43,14 @@
       </p>
       <div class="time d-flex justify-content-between">
         <p>{{ job.time }}</p>
-        <button type="button" class="btn view">View</button>
+        <button
+          type="button"
+          class="btn view"
+          (click)="getId(job.id)"
+          routerLink="/about"
+        >
+          View
+        </button>
       </div>
     </div>
   </div>

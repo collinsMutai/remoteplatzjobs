@@ -1,5 +1,6 @@
 .container {
   padding-top: 7rem;
+  padding-bottom: 50px;
 }
 
 .btn {
@@ -56,9 +57,10 @@ h3 {
   background-color: #c7baeb;
   color: #754afd;
 }
+
 @media only screen and (max-width: 600px) {
-    .search input {
-        width: 100px;
-        height: 40px;
-      }
+  .search input {
+    width: 100px;
+    height: 40px;
   }
+}
