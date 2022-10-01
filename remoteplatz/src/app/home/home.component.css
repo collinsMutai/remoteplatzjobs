@@ -2,7 +2,6 @@
   padding-top: 7rem;
   padding-bottom: 50px;
 }
-
 .btn {
   background-color: #d1dff2;
   color: #1966d2;
@@ -39,7 +38,6 @@ h1 {
   border-radius: 5px;
   color: #fff;
 }
-
 h3 {
   font-size: 1.2rem;
 }
@@ -57,7 +55,6 @@ h3 {
   background-color: #c7baeb;
   color: #754afd;
 }
-
 @media only screen and (max-width: 600px) {
   .search input {
     width: 100px;

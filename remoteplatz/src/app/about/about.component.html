@@ -1,7 +1,8 @@
+<app-header></app-header>
 <div class="container">
     <div class="content">
         <h1>{{job.title}} </h1>
-        <p><span class="{{job.flag}}"></span> RIYADH,SAUDI ARABIA</p>
+        <p><span class="{{job.flag}}"></span> {{job.location}}</p>
         <div class="bar">
             <p>40hr/week
             </p>
@@ -24,5 +25,11 @@
        <ul *ngFor="let item of job.requirements">
         <li>{{item}}</li>
        </ul>
+       <div class="d-flex justify-content-between align-middle mt-5">
+
+         <button type="button"  id="apply"  routerLink="/login" class="btn">Apply</button>
+         <p>2 days ago</p>
+       </div>
     </div>
 </div>
+<app-footer></app-footer>

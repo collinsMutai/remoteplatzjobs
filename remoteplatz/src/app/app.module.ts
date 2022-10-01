@@ -9,9 +9,11 @@ import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { BtnstyleDirective } from './Directives/btnstyle.directive';
 import { FilterPipe } from '../app/Pipes/filter.pipe';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FiltertitlePipe } from './Pipes/filtertitle.pipe';
 import { AboutComponent } from './about/about.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { AboutComponent } from './about/about.component';
     FilterPipe,
     FiltertitlePipe,
     AboutComponent,
+    LoginComponent,
+    RegisterComponent,
    
   ],
   imports: [
@@ -28,7 +32,8 @@ import { AboutComponent } from './about/about.component';
     NgbModule,
     SharedModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,86 @@
+<div class="container-fluid">
+  <div class="content">
+    <div class="img"></div>
+    <div class="form">
+      <a class="navbar-brand" href="#"> RemotePlatz </a>
+      <p class="mb-4 mt-4">Login with your email</p>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-outline mt-4">
+          <input
+            type="text"
+            placeholder="First Name"
+            class="form-control"
+            formControlName="fname"
+          />
+        </div>
+        <div class="form-outline">
+          <input
+            type="text"
+            placeholder="Last Name"
+            class="form-control"
+            formControlName="lname"
+          />
+        </div>
+        <div class="form-outline">
+          <input
+            type="email"
+            placeholder="Email"
+            class="form-control"
+            formControlName="email"
+          />
+        </div>
+        <div class="form-outline">
+          <input
+            type="password"
+            placeholder="Password"
+            class="form-control"
+            formControlName="password"
+          />
+        </div>
+        <div class="form-outline d-flex countryphone">
+          <select
+            class="form-select country"
+            aria-label="Default select example"
+            formControlName="country"
+          >
+            <option selected>Country</option>
+            <option value="Amsterdam, Netherlands">
+              Amsterdam, Netherlands
+            </option>
+            <option value="Riyadh, Saudi Arabia">Riyadh, Saudi Arabia</option>
+            <option value="Berlin, Germany">Berlin, Germany</option>
+          </select>
+          <input
+            type="text"
+            placeholder="Phone#"
+            class="form-control phone"
+            formControlName="phone"
+          />
+        </div>
+
+        <input
+          class="form-control"
+          type="file"
+          id="formFile"
+          formControlName="cv"
+        />
+        <div class="form-outline align-self-start ms-5">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="checkbox"
+            formControlName="terms"
+          />
+          <label for="checkbox"> I accept terms and conditions</label>
+        </div>
+        <button type="submit" class="btn login" [disabled]="!form.valid">
+          Login
+        </button>
+      </form>
+      <p class="mt-3">
+        Do you have an account?<span><a routerLink="/login">Register</a></span>
+      </p>
+    </div>
+  </div>
+</div>
