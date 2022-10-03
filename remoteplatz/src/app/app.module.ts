@@ -14,6 +14,9 @@ import { FiltertitlePipe } from './Pipes/filtertitle.pipe';
 import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AuthModule } from '@auth0/auth0-angular';
+
+import { environment } from '../environments/environment'
 
 @NgModule({
   declarations: [
@@ -33,7 +36,11 @@ import { RegisterComponent } from './register/register.component';
     SharedModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AuthModule.forRoot({
+      domain: environment.domain,
+      clientId: environment.clientId
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
