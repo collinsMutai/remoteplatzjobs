@@ -5,18 +5,19 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 
 import { SharedModule } from './Shared/shared/shared.module';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './components/home/home.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { BtnstyleDirective } from './Directives/btnstyle.directive';
 import { FilterPipe } from '../app/Pipes/filter.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FiltertitlePipe } from './Pipes/filtertitle.pipe';
-import { AboutComponent } from './about/about.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { AboutComponent } from './components/about/about.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 import { AuthModule } from '@auth0/auth0-angular';
 
-import { environment } from '../environments/environment'
+import { environment } from '../environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,10 +29,10 @@ import { environment } from '../environments/environment'
     AboutComponent,
     LoginComponent,
     RegisterComponent,
-   
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     NgbModule,
     SharedModule,
     AppRoutingModule,
@@ -39,10 +40,10 @@ import { environment } from '../environments/environment'
     ReactiveFormsModule,
     AuthModule.forRoot({
       domain: environment.domain,
-      clientId: environment.clientId
-    })
+      clientId: environment.clientId,
+    }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

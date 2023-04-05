@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
-import { IJobs } from '../Interface/Ijobs';
-import { JobsService } from '../Service/jobs.service';
+import { IJobs } from '../../Interface/Ijobs';
+import { JobsService } from '../../Service/jobs.service';
 
 @Component({
   selector: 'app-home',
@@ -20,15 +20,16 @@ export class HomeComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private jobsService: JobsService,
-    private auth: AuthService
+    private jobsService: JobsService
   ) {
     this.list = ['Full Stack', 'Frontend', 'React', 'Java'];
   }
 
   ngOnInit(): void {
-    this.jobs = this.jobsService.jobs;
-    this.getUser();
+    this.jobsService.getJobs().subscribe((results) => {
+      console.log(results);
+      this.jobs = results;
+    });
   }
   select(item: any) {
     this.selected = item;
@@ -48,11 +49,6 @@ export class HomeComponent implements OnInit {
   getId(id: number) {
     this.router.navigate([`/jobs/${id}`], {
       relativeTo: this.route,
-    });
-  }
-  getUser() {
-    this.auth.user$.subscribe((profile) => {
-      console.log(profile);
     });
   }
 }
