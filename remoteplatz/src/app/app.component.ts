@@ -19,30 +19,22 @@ export class AppComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.login();
+    this.JobsService.autoAuthUser();
+  }
 
   login(): void {
-    this.router.navigate(['/login']);
     this.authListenerSubs = this.JobsService.getAuthStatusListener().subscribe(
       (isAuthenticated) => {
         console.log(isAuthenticated);
-
         this.userIsAuthenticated = isAuthenticated;
-        //  console.log(this.userIsAuthenticated);
-
-        // this.router.navigate(['/']);
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'];
-        this.router.navigateByUrl(this.returnUrl);
-
-        console.log('user logged in');
       }
     );
   }
-  logout(): void {
-    this.JobsService.onLogout();
-
-    this.userIsAuthenticated = true;
-    // this.router.navigate(['/']);
+  onLogout(): void {
+    this.JobsService.log_out();
+    this.router.navigate(['/']);
   }
   ngOnDestroy(): void {
     this.authListenerSubs.unsubscribe();

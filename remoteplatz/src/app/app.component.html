@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-expand-sm navbar-light bg-light pt-3 fixed-top">
   <div class="container">
     <a class="navbar-brand" href="#"> RemotePlatz </a>
@@ -14,22 +15,22 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <button
-      
-        *ngIf="userIsAuthenticated"
+      id="login"
+        *ngIf="!userIsAuthenticated"
         type="button"
-        (click)="login()"
+        
         class="btn-outline ms-auto login"
-        routerLink="/login"
+      routerLink="/login"
       >
         Login
       </button>
 
       <button
       
-        *ngIf="!userIsAuthenticated"
+        *ngIf="userIsAuthenticated"
         type="button"
         class="btn ms-auto btn-danger btn-block"
-        (click)="logout()"
+        (click)="onLogout()"
       >
         Logout
       </button>
@@ -39,4 +40,4 @@
 </nav>
 
 <router-outlet></router-outlet>
-<app-footer></app-footer>
+<!-- <app-footer></app-footer> -->

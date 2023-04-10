@@ -18,6 +18,7 @@ import { AuthModule } from '@auth0/auth0-angular';
 
 import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
+import { ApplyComponent } from './apply/apply.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     AboutComponent,
     LoginComponent,
     RegisterComponent,
+    ApplyComponent,
   ],
   imports: [
     BrowserModule,
