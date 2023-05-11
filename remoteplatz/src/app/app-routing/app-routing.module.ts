@@ -18,7 +18,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   {
-    path: 'apply',
+    path: 'apply/:id',
     component: ApplyComponent,
     canActivate: [AuthGuardService],
   },

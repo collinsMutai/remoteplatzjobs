@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from '@auth0/auth0-angular';
+
 import { IJobs } from '../../Interface/Ijobs';
 import { JobsService } from '../../Service/jobs.service';
 
@@ -26,10 +26,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.jobsService.getJobs().subscribe((results) => {
-      console.log(results);
-      this.jobs = results;
-    });
+    this.jobs = this.jobsService.Jobs;
   }
   select(item: any) {
     this.selected = item;

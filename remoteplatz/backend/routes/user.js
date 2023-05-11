@@ -1,5 +1,5 @@
 const express = require("express");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const User = require("../models/user");
@@ -54,13 +54,14 @@ router.post("/login", (req, res, next) => {
       }
       const token = jwt.sign(
         { email: fetchedUser.email, userId: fetchedUser._id },
-        "secret_this_should_be_longer",
+        process.env.JWT_KEY,
         { expiresIn: "1h" }
       );
       console.log(token);
       res.status(200).json({
         token: token,
-        expiresIn: 3600
+        expiresIn: 3600,
+        userId: fetchedUser._id
       });
     })
     .catch((err) => {
@@ -72,10 +73,11 @@ router.post("/login", (req, res, next) => {
 });
 
 
-router.get("/:id", (req, res, next) => {
-  Post.findById(req.params.id).then((post) => {
-    if (post) {
-      res.status(200).json(post);
+router.get("/", (req, res, next) => {
+  User.find()
+    .then((users) => {
+    if (users) {
+      res.status(200).json({users: users});
     } else {
       res.status(404).json({ message: "Post not found!" });
     }

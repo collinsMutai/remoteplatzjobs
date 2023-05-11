@@ -1,5 +1,4 @@
-{
-  "jobs": [
+export const Data =[
     {
       "id": 0,
       "title": "Full Stack JavaScript Developer",
@@ -73,4 +72,4 @@
       ]
     }
   ]
-}
+

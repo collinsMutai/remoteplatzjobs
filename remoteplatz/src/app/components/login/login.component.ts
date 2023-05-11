@@ -1,22 +1,40 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthService } from '@auth0/auth0-angular';
+
 import { JobsService } from '../../Service/jobs.service';
-import { IUser } from 'src/app/Interface/IUser';
+
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit {
-  constructor(private router: Router, public JobsService: JobsService, AuthService: AuthService) {}
+export class LoginComponent implements OnInit, OnDestroy {
+  isLoading = false;
+  private authStatusSub!: Subscription;
+  constructor(public JobsService: JobsService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authStatusSub = this.JobsService.getAuthStatusListener().subscribe(
+      (authStatus) => {
+        console.log('is logged in: ' + authStatus);
+        // this.isLoading = false;
+      }
+    );
+  }
+
   onLogin(form: NgForm) {
     console.log(form.value);
-    
-    this.JobsService.login(form.value.email, form.value.password)
+    if (form.invalid) {
+      return;
+    }
+
+    this.JobsService.login(form.value.email, form.value.password);
+  }
+  ngOnDestroy(): void {
+    if (this.authStatusSub) {
+      this.authStatusSub.unsubscribe();
+    }
   }
 }

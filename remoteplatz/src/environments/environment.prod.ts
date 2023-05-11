@@ -1,5 +1,9 @@
 export const environment = {
   production: true,
-  domain: 'collinsfrontend.us.auth0.com',
-  clientId: 'Fn28evbfjKcFLRTcMFDqyTNUR86Q3VXF'
+  clientId: '',
+  domain: '',
+  // apiUrl:
+    // 'http://remoteplatzjobs-env.eba-umd7pcmm.us-east-1.elasticbeanstalk.com/api',
+  // apiUrl: 'http://remoteplatzjobs.us-east-1.elasticbeanstalk.com/api',
+  apiUrl: 'http://localhost:3002/api',
 };

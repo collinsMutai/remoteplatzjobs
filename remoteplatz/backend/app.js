@@ -9,9 +9,7 @@ const userRoutes = require("./routes/user");
 const app = express();
 
 mongoose
-  .connect(
-    "mongodb+srv://collo:0ncVrtm6qzKTedDk@cluster0.rajb8.mongodb.net/remoteplatz"
-  )
+  .connect(process.env.MONGO_DB_URL)
   .then(() => {
     console.log("Connected to database!");
   })
@@ -21,7 +19,7 @@ mongoose
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
+// app.use("/", express.static(path.join(__dirname, "angular")));
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -38,5 +36,8 @@ app.use((req, res, next) => {
 
 app.use("/api/user", userRoutes);
 
+// app.use((req, res, next) => {
+//   res.sendFile(path.join(__dirname, "angular", "index.html"));
+// });
 
 module.exports = app;
